@@ -57,7 +57,7 @@ def main():
             data=staff_data.to_csv(index=False).encode(),
             file_name="staff_survey_data.csv",
             key="staff_download_button",
-            help="Click to download the Staff survey data with column headers."
+            help="Click to download the Staff survey data"
         )
 
     elif survey_option == "Patient survey":
@@ -111,7 +111,7 @@ def main():
             data=patient_data.to_csv(index=False).encode(),
             file_name="patient_survey_data.csv",
             key="patient_download_button",
-            help="Click to download the Patient survey data with column headers."
+            help="Click to download the Patient survey data"
         )
 
 
