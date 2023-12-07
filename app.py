@@ -77,7 +77,7 @@ def main():
         elif select_all_except_age:
             selected_columns = numerical_columns_except_age
         else:
-            selected_columns = st.multiselect("Please select at least one header", numerical_columns_except_age)
+            selected_columns = st.multiselect("Please select at least one header", all_numerical_columns)
 
         if not any(selected_columns):
             st.warning("Please select at least one header.")
