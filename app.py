@@ -1,7 +1,7 @@
-# app.py
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import base64
 
 # Main Streamlit application
 def main():
@@ -52,6 +52,15 @@ def main():
             answers_count = staff_data[question].value_counts().sort_index()
             st.bar_chart(answers_count)
 
+        # Add download button for Staff data
+        st.download_button(
+            label="Download Staff Data as CSV",
+            data=staff_data.to_csv(index=False).encode(),
+            file_name="staff_survey_data.csv",
+            key="staff_download_button",
+            help="Click to download the Staff survey data with column headers."
+        )
+
     elif survey_option == "Patient survey":
         # Load Patient survey data
         patient_data = pd.read_csv("survey/patient.csv")
@@ -96,6 +105,15 @@ def main():
             st.subheader(f"Average Ratings for: {question}")
             answers_count = patient_data[question].value_counts().sort_index()
             st.bar_chart(answers_count)
+
+        # Add download button for Patient data
+        st.download_button(
+            label="Download Patient Data as CSV",
+            data=patient_data.to_csv(index=False).encode(),
+            file_name="patient_survey_data.csv",
+            key="patient_download_button",
+            help="Click to download the Patient survey data with column headers."
+        )
 
 # Run the app
 if __name__ == "__main__":
