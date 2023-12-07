@@ -7,7 +7,7 @@ def main():
     # Configure page layout
     st.set_page_config(layout="wide")
 
-    st.title("Survey Analysis App")
+    st.title("Survey Analysis")
 
     # Select between survey options
     survey_option = st.selectbox("Select a survey option", ["Select Option", "Staff survey", "Patient survey"])
@@ -23,10 +23,10 @@ def main():
         if select_all:
             selected_columns = staff_data.select_dtypes(include=['int', 'float']).columns
         else:
-            selected_columns = st.multiselect("Select numerical columns", staff_data.select_dtypes(include=['int', 'float']).columns)
+            selected_columns = st.multiselect("Please select at least one header", staff_data.select_dtypes(include=['int', 'float']).columns)
 
         if not any(selected_columns):
-            st.warning("Please select at least one numerical column.")
+            st.warning("Please select at least one header.")
             return
 
         # Calculate average for selected columns
