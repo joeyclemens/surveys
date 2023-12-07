@@ -47,7 +47,7 @@ def main():
 
         # Display average number of times each answer is selected for each question with a custom color scheme
         for i, question in enumerate(staff_questions):
-            st.subheader(f"Ratings for: {question}")
+            st.subheader(f"{question}")
             answers_count = staff_data[question].value_counts().sort_index()
             st.bar_chart(answers_count, color='#d62728')  # red color
 
@@ -101,7 +101,7 @@ def main():
 
         # Display average number of times each answer is selected for each question with a custom color scheme
         for i, question in enumerate(patient_questions):
-            st.subheader(f"Ratings for: {question}")
+            st.subheader(f"{question}")
             answers_count = patient_data[question].value_counts().sort_index()
             st.bar_chart(answers_count, color='#2ca02c')  # green color
 
