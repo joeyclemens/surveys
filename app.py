@@ -1,7 +1,6 @@
+# app.py
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import base64
 
 # Main Streamlit application
 def main():
@@ -33,8 +32,8 @@ def main():
         # Calculate average for selected columns
         averages = staff_data[selected_columns].mean()
 
-        # Plot the averages
-        st.bar_chart(averages)
+        # Plot the averages with a custom color scheme
+        st.bar_chart(averages, color='#1f77b4')  # blue color
 
         # Questions related analysis
         st.header("Questions Analysis for Staff Survey")
@@ -46,11 +45,11 @@ def main():
             "How would you rate the internal acoustic privacy?"
         ]
 
-        # Display average number of times each answer is selected for each question
-        for question in staff_questions:
+        # Display average number of times each answer is selected for each question with a custom color scheme
+        for i, question in enumerate(staff_questions):
             st.subheader(f"Average Ratings for: {question}")
             answers_count = staff_data[question].value_counts().sort_index()
-            st.bar_chart(answers_count)
+            st.bar_chart(answers_count, color='#d62728')  # red color
 
         # Add download button for Staff data
         st.download_button(
@@ -87,8 +86,8 @@ def main():
         # Calculate average for selected columns
         averages = patient_data[selected_columns].mean()
 
-        # Plot the averages
-        st.bar_chart(averages)
+        # Plot the averages with a custom color scheme
+        st.bar_chart(averages, color='#ff7f0e')  # orange color
 
         # Questions related analysis
         st.header("Questions Analysis for Patient Survey")
@@ -100,11 +99,11 @@ def main():
             "How would you rate the internal sound-proofing?"
         ]
 
-        # Display average number of times each answer is selected for each question
-        for question in patient_questions:
+        # Display average number of times each answer is selected for each question with a custom color scheme
+        for i, question in enumerate(patient_questions):
             st.subheader(f"Average Ratings for: {question}")
             answers_count = patient_data[question].value_counts().sort_index()
-            st.bar_chart(answers_count)
+            st.bar_chart(answers_count, color='#2ca02c')  # green color
 
         # Add download button for Patient data
         st.download_button(
@@ -114,6 +113,9 @@ def main():
             key="patient_download_button",
             help="Click to download the Patient survey data with column headers."
         )
+
+
+
 
 # Run the app
 if __name__ == "__main__":
