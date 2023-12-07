@@ -77,10 +77,10 @@ def main():
         elif select_all_except_age:
             selected_columns = numerical_columns_except_age
         else:
-            selected_columns = st.multiselect("Select numerical columns", numerical_columns_except_age)
+            selected_columns = st.multiselect("Please select at least one header", numerical_columns_except_age)
 
         if not any(selected_columns):
-            st.warning("Please select at least one numerical column.")
+            st.warning("Please select at least one header.")
             return
 
         # Calculate average for selected columns
