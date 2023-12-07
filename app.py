@@ -89,7 +89,8 @@ def main():
 
         # Plot the averages with a custom color scheme
         st.bar_chart(averages, color='#ff7f0e')  # orange color
-
+        # Add horizontal line
+        st.markdown("---")
         # Questions related analysis
         # st.header("Questions Analysis for Patient Survey")
 
