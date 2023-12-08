@@ -6,7 +6,10 @@ import pandas as pd
 def main():
     # Configure page layout
     st.set_page_config(layout="wide")
-
+    # Display the image at the top left
+    image_path = "MJMEDICAL.png"
+    st.image(image_path, use_column_width=False, width=300)
+    
     st.title("Survey Analysis")
 
     # Select between survey options
@@ -33,7 +36,7 @@ def main():
         averages = staff_data[selected_columns].mean()
 
         # Plot the averages with a custom color scheme
-        st.bar_chart(averages, color='#1f77b4')  # blue color
+        st.bar_chart(averages, color='#1f77b4', height=500)  # blue color
         # Add horizontal line
         st.markdown("---")
         # Questions related analysis
