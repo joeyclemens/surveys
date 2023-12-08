@@ -1,4 +1,3 @@
-# app.py
 import streamlit as st
 import pandas as pd
 
@@ -54,6 +53,33 @@ def main():
             st.subheader(f"{question}")
             answers_count = staff_data[question].value_counts().sort_index()
             st.bar_chart(answers_count, color='#d62728')  # red color
+            
+        # Display all text responses
+        text_responses = staff_data[
+            ["Role", "Department", "Were there any features that you like or dislike in your department?",
+             "What changes would you make to the department environment if you were able to?",
+             "What single element of the building has a positive impact on patients/carers?",
+             "What single element of the building has a negative impact on patients/carers?",
+             "What single element of your department has a positive impact on your work?",
+             "What single element of your department has a negative impact on your work?",
+             "Any other comments?"
+             ]
+        ]
+
+        st.subheader("All Text Responses")
+        st.write(text_responses)
+
+        # Add download button for all text responses
+        st.download_button(
+            label="Download All Text Responses as CSV",
+            data=text_responses.to_csv(index=False).encode(),
+            file_name="staff_text_responses.csv",
+            key="staff_text_responses_download_button",
+            help="Click to download all text responses"
+        )
+
+
+
 
         # Add download button for Staff data
         st.download_button(
@@ -109,6 +135,31 @@ def main():
             st.subheader(f"{question}")
             answers_count = patient_data[question].value_counts().sort_index()
             st.bar_chart(answers_count, color='#2ca02c')  # green color
+
+        # Display all text responses for the patient survey
+        patient_text_responses = patient_data[
+            ["Reason for visit", "Which departments have you visited?",
+             "Were there any features that you liked or disliked in the buidling?",
+             "What single element of the building has had the greatest positive impact on you?",
+             "What single element of the building has had the greatest negative impact on you?",
+             "Any other comments"
+             ]
+        ]
+
+        st.subheader("All Text Responses for Patient Survey")
+        st.write(patient_text_responses)
+
+        # Add download button for all patient text responses
+        st.download_button(
+            label="Download All Patient Text Responses as CSV",
+            data=patient_text_responses.to_csv(index=False).encode(),
+            file_name="patient_text_responses.csv",
+            key="patient_text_responses_download_button",
+            help="Click to download all text responses for patient survey"
+        )
+
+
+
 
         # Add download button for Patient data
         st.download_button(
